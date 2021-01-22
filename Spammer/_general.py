@@ -34,7 +34,7 @@ if float(new_version_checker()) > ver:
     ans = input('> ').lower()
     if ans == 'y':
         print('\nDownloading')
-        os.system("curl -o S5K.py https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/S5K.py")
+        os.system("curl -o _general.py https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/_general.py")
     elif ans == 'n':
         pass
     else:
