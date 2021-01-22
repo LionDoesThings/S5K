@@ -1,10 +1,14 @@
+#For General Spammer
 Hotkeys:
   Start: F5
   Stop: F6
 Misc:
   SpamCooldown: 300
 
+#For Direct Discord Spammer
+# Watch This Video For Thos Who Doesn't Know How To Get Your Token
+#https://www.youtube.com/watch?v=YEgFvgg7ZPI
+TOKEN: PUT_YOUR_TOKEN_HERE
 
 
-
-Settings_Version: 0
+Settings_Version: 0.1
