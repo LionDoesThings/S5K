@@ -52,7 +52,7 @@ if float(new_settings_version_checker()) > settings_ver:
     print('New settings version found\nDownloading now')
     os.system("curl -o settings.yaml https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/settings.yaml")
 
-0s.system('cls')
+os.system('cls')
 to_spam = input('What to spam: ') + '\n'
 
 try:
