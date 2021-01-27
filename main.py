@@ -8,17 +8,13 @@ print('''Options:
 ''')
 a = int(input('> '))
 if a == 0:
-	try:
-		os.system('py _general.py')
-	except FileNotFoundError:
+	if not os.path.isfile('_general.py'):
 		os.system('curl -o _general.py https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/_general.py')
-		os.system('py _general.py')
+	os.system('py _general.py')
 elif a == 1:
-	try:
-		os.system('py _discord.py')
-	except FileNotFoundError:
+	if not os.path.isfile('_discord.py'):
 		os.system('curl -o _discord.py https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/_discord.py')
-		os.system('py _discord.py')
+	os.system('py _discord.py')
 else:
 	input('no\n')
 	exit()
