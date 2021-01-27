@@ -1,5 +1,5 @@
 import os
-os.system('pip install pynput requests keyboard discord asyncio')
+os.system('pip install pynput requests keyboard discord asyncio PyYAML')
 os.system('cls')
 print('S5K Made By LionDoesThings\nYouTube: https://www.youtube.com/channel/UCzpt7vwCAola2IJ1c4rD1aQ\n')
 print('''Options:
