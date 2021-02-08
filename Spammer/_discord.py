@@ -8,7 +8,7 @@ channel_id = None
 started = False
 
 
-ver = 0a
+ver = 1a
 
 
 def new_version_checker():
