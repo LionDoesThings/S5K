@@ -5,37 +5,36 @@ import yaml
 import os
 
 
-ver = 0.1a
+ver = 1
 
 
 def new_version_checker():
-    version_url = 'https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/version'
-    return requests.get(version_url).text
+    url = 'https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/_general.py'
+    text = requests.get(url).text
+    return float(text[text.find('ver')+6:text.find('a',text.find('ver')+6)])
 
 
 def new_settings_version_checker():
-    settings_version_url = 'https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/settings_version'
-    return requests.get(settings_version_url).text
+    url = 'https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/settings.yaml'
+    text = requests.get(url).text
+    return float(text[text.find('Settings_Version')+18:-1])
 
 
 try:
     with open("settings.yaml", 'r') as f:
         settings = yaml.load(f, Loader=yaml.FullLoader)
-    start_hk = settings["Hotkeys"]["Start"]
-    stop_hk = settings["Hotkeys"]["Stop"]
-    spam_cd = int(settings["Misc"]["SpamCooldown"])
-    settings_ver = int(settings["Settings_Version"])
 except FileNotFoundError:
     print('settings.yaml not found!' + '\n' + 'Downloading settings.yaml')
     os.system("curl -o settings.yaml https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/settings.yaml")
     with open("settings.yaml", 'r') as f:
         settings = yaml.load(f, Loader=yaml.FullLoader)
-    start_hk = settings["Hotkeys"]["Start"]
-    stop_hk = settings["Hotkeys"]["Stop"]
-    spam_cd = int(settings["Misc"]["SpamCooldown"])
-    settings_ver = int(settings["Settings_Version"])
 
-if float(new_version_checker()) > ver:
+start_hk = settings["Hotkeys"]["Start"]
+stop_hk = settings["Hotkeys"]["Stop"]
+spam_cd = int(settings["Misc"]["SpamCooldown"])
+settings_ver = int(settings["Settings_Version"])
+
+if not new_version_checker() <= ver:
     print('New version found but not necessary to update right now' + '\n' + 'Would you like to download the new version now? (y/n)')
     ans = input('> ').lower()
     if ans == 'y':
@@ -48,7 +47,7 @@ if float(new_version_checker()) > ver:
         input()
         exit()
 
-if float(new_settings_version_checker()) > settings_ver:
+if not new_settings_version_checker() <= settings_ver:
     print('New settings version found\nDownloading now')
     os.system("curl -o settings.yaml https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/settings.yaml")
 
