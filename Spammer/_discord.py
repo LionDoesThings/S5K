@@ -8,16 +8,18 @@ channel_id = None
 started = False
 
 
-ver = 1a
+ver = 1
 
 
 def new_version_checker():
-	version_url = 'https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/discord_version'
-	return requests.get(version_url).text
+	url = 'https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/_discord.py'
+	text = requests.get(url).text
+	return float(text[text.find('ver')+6:text.find('a',text.find('ver')+6)])
 
 def new_settings_version_checker():
-	settings_version_url = 'https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/settings_version'
-	return requests.get(settings_version_url).text
+	url = 'https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/settings.yaml'
+	text = requests.get(url).text
+	return float(text[text.find('Settings_Version')+18:-1])
 
 
 try:
@@ -29,7 +31,7 @@ except FileNotFoundError:
 	print('settings.yaml not found!' + '\n' + 'Downloading settings.yaml')
 	os.system("curl -o settings.yaml https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/settings.yaml")
 
-if float(new_version_checker()) > ver:
+if not new_version_checker() <= ver:
     print('New version found but not necessary to update right now' + '\n' + 'Would you like to download the new version now? (y/n)')
     ans = input('> ').lower()
     if ans == 'y':
@@ -42,7 +44,7 @@ if float(new_version_checker()) > ver:
         input()
         exit()
 
-if float(new_settings_version_checker()) > settings_ver:
+if not new_settings_version_checker() <= settings_ver:
 	print('New settings version found\nDownloading now')
 	os.system("curl -o settings.yaml https://raw.githubusercontent.com/LionDoesThings/S5K-v3-aka-Yasuo/main/Spammer/settings.yaml")
 
