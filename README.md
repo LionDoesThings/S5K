@@ -8,5 +8,7 @@ I suggest following this https://phoenixnap.com/kb/how-to-install-python-3-windo
 for people that doesn't have Python installed<br/>
 If the auto download doesn't work make sure to download this https://curl.se/dlwiz/?type=bin<br/>
 
+If anything failed just delete the the files and rerun main.py<br/>
+
 Download "main.py" or "main.exe" to start using<br/>
 Download "main.exe" to start the spammer easily<br/>
