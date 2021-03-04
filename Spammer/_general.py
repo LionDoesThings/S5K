@@ -5,7 +5,7 @@ import yaml
 import os
 
 
-ver = 1
+ver = 1a
 
 
 def new_version_checker():
